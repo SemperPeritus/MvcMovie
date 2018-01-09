@@ -9,7 +9,7 @@ namespace MvcMovie.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly MovieDBContext _db = new MovieDBContext();
+        private readonly MovieDbContext _db = new MovieDbContext();
 
         // GET: Movies
         public ActionResult Index()
