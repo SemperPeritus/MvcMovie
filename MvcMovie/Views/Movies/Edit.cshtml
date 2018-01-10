@@ -1,4 +1,5 @@
-﻿@model MvcMovie.Models.Movie
+﻿@using System.Threading
+@model MvcMovie.Models.Movie
 
 @{
     ViewBag.Title = "Edit";
@@ -10,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Movie</h4>
         <hr />
@@ -63,4 +64,29 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    @*<script src="~/Scripts/globalize.js"></script>
+        <script src="~/Scripts/globalize/cultures/globalize.culture.@(Thread.CurrentThread.CurrentCulture.Name).js"></script>
+        <script>
+            $validation.method.number = function(value, element) {
+                return this.optional(element) || !isNaN(Globalize.parseFloat(value));
+            };
+            $(document).ready(function() {
+                Globalize.culture('@(Thread.CurrentThread.CurrentCulture.Name)');
+            });
+        </script>
+        <script>
+            jQuery.extend(jQuery.validation.methods,
+                {
+                    range: function(value, element, param) {
+                        var val = Globalize.parseFloat(value);
+                        return this.optional(element) || (val >= param[0] && val <= param[1]);
+                    }
+                });
+            $.validator.methods.date = function(value, element) {
+                return this.optional(element ||
+                    Globalize.parseDate(value) ||
+                    Globalize.parseDate(value, "yyyy-MM-dd"));
+            };
+        </script>*@
 }
