@@ -12,9 +12,14 @@ namespace MvcMovie.Controllers
         private readonly MovieDbContext _db = new MovieDbContext();
 
         // GET: Movies
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            return View(_db.Movies.ToList());
+            var movies = from m in _db.Movies select m;
+
+            if (!string.IsNullOrEmpty(id))
+                movies = movies.Where(s => s.Title.Contains(id));
+
+            return View(movies);
         }
 
         // GET: Movies/Details/5
