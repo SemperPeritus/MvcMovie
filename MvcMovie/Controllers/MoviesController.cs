@@ -28,8 +28,8 @@ namespace MvcMovie.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
                 movies = movies.Where(s => s.Title.Contains(searchString));
-            if (!string.IsNullOrEmpty(searchString))
-                movies = movies.Where(s => s.Title.Contains(searchString));
+            if (!string.IsNullOrEmpty(movieGenre))
+                movies = movies.Where(x => x.Genre == movieGenre);
 
             return View(movies);
         }
