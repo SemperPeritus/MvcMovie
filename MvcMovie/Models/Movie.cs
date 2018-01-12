@@ -9,7 +9,7 @@ namespace MvcMovie.Models
         public int Id { get; set; }
 
         [StringLength(60, MinimumLength = 3)]
-//        [RegularExpression(@"[a-zA-Z0-9]")]
+        [RegularExpression(@"[a-zA-Z0-9'\s]*$")]
         public string Title { get; set; }
 
         [Display(Name = "Release Date")]
